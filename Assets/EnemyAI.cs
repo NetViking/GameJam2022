@@ -18,7 +18,8 @@ public class EnemyAI : MonoBehaviour
     [SerializeField]
     float audiorange = 5f;
     Vector3 target;
-    int index;
+    [SerializeField]
+    private int index;
     [SerializeField]
     GameObject RouteObject;
     PatrolPoint[] pointlist;
@@ -171,7 +172,9 @@ public class EnemyAI : MonoBehaviour
 
     bool TargetReached()
     {
-        if (Vector3.Distance(target, transform.position) < 0.6f)
+        if (target.x - transform.position.x < 0.2f &&
+            target.z - transform.position.z < 0.2f)
+        //if (Vector3.Distance(target, transform.position) < 0.6f)
         { return true; }
         return false;
     }
